@@ -4,7 +4,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 
 export default function Main() {
   return (
-    <main>
+    <main id="home">
       <aside>
         <h1>Ahmed Atef</h1>
         <h2>A Civil Engineer You Can Trust</h2>

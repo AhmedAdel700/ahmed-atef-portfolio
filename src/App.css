@@ -11,12 +11,11 @@ a {
   color: unset;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-image: url(images/bg1.jpg);
-  background-position: top;
-  background-size: cover; /* Ensures the image covers the whole screen */
-  background-repeat: no-repeat; /* Prevents the background from repeating */
-  background-attachment: fixed; /* Keeps the background fixed when scrolling */
   height: 100vh; /* Full viewport height */
   user-select: none;
   font-family: "Bungee Tint", sans-serif;
@@ -92,6 +91,11 @@ main {
   flex-direction: column;
   padding: 5rem 3rem;
   height: calc(100vh - 68.5px);
+  background-image: url(images/bg1.jpg);
+  background-position: top;
+  background-size: cover; /* Ensures the image covers the whole screen */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
 }
 
 aside {
@@ -217,5 +221,155 @@ aside h2 {
 
   .btns {
     align-self: center;
+  }
+}
+
+#projects {
+  min-height: 100vh;
+  max-width: 100vw;
+  padding: 1rem;
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 4rem;
+  margin: 1rem 0;
+}
+
+#projects .work {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 0.5rem;
+}
+
+#projects .work .item {
+  position: relative;
+  overflow: hidden;
+}
+
+#projects .work .item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px; /* Optional: add rounded corners */
+  z-index: 1; /* Ensure the effect is above the image */
+}
+
+#projects .work .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the item */
+  position: relative;
+  z-index: 0; /* Keep the image below the glass effect */
+}
+
+#projects .work .item h4 {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#projects .work .item:nth-child(1) {
+  grid-area: 1 / 1 / 4 / 7;
+}
+
+#projects .work .item:nth-child(2) {
+  grid-area: 1 / 7 / 4 / 10;
+}
+
+#projects .work .item:nth-child(3) {
+  grid-area: 4 / 1 / 7 / 4;
+}
+
+#projects .work .item:nth-child(4) {
+  grid-area: 4/ 4 / 7 / 7;
+}
+
+#projects .work .item:nth-child(5) {
+  grid-area: 4 / 7 / 7 / 10;
+}
+
+#projects .work .item:nth-child(6) {
+  grid-area: 7 / 1/ 10/ 4;
+}
+
+#projects .work .item:nth-child(7) {
+  grid-area: 7/ 4 / 10 / 10;
+}
+
+/* Modal styling */
+.modal {
+  display: block; /* Make modal visible when image is clicked */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  #projects .work {
+    display: grid;
+    grid-template-columns: 1fr; /* One item per row */
+    grid-template-rows: auto;
+    gap: 0.5rem;
+    height: auto; /* Allow height to adjust */
+  }
+
+  #projects h2 {
+    font-size: 1.7rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  #projects .work .item {
+    grid-area: auto !important; /* Ensure grid-area is overridden */
+    height: auto; /* Let height adjust */
+    width: 100%; /* Make sure each item takes full width */
+    height: 350px;
+    width: 100%;
+  }
+
+  .modal-content {
+    max-width: 92%;
+    max-height: 92%;
+    object-fit: contain;
+  }
+
+  .close {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+  #projects h2 {
+    font-size: 1.5rem;
   }
 }

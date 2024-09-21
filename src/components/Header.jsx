@@ -21,9 +21,9 @@ export default function Header() {
       )}
       <div className="logo">Eng: Ahmed Atef</div>
       <nav className={isActive ? "active" : ""}>
-        <a href="home">Home</a>
-        <a href="projects">Projects</a>
-        <a href="contact">Contact Me</a>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Me</a>
       </nav>
       <div></div>
     </header>
