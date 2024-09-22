@@ -5,6 +5,12 @@ import { useState } from "react";
 export default function Header() {
   const smallScreen = useMediaQuery("(max-width:767px)");
   const [isActive, setIsActive] = useState(false);
+  const [activeLink, setActiveLink] = useState("#home"); // State to track active link
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link); // Update the active link on click
+    setIsActive(false); // Close the menu if on small screens
+  };
 
   return (
     <header>
@@ -21,9 +27,33 @@ export default function Header() {
       )}
       <div className="logo">Eng: Ahmed Atef</div>
       <nav className={isActive ? "active" : ""}>
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact Me</a>
+        <a
+          href="#home"
+          onClick={() => handleLinkClick("#home")}
+          style={{
+            color: activeLink === "#home" ? "rgb(190, 20, 20)" : "white",
+          }}
+        >
+          Home
+        </a>
+        <a
+          href="#projects"
+          onClick={() => handleLinkClick("#projects")}
+          style={{
+            color: activeLink === "#projects" ? "rgb(190, 20, 20)" : "white",
+          }}
+        >
+          Projects
+        </a>
+        <a
+          href="#contact"
+          onClick={() => handleLinkClick("#contact")}
+          style={{
+            color: activeLink === "#contact" ? "rgb(190, 20, 20)" : "white",
+          }}
+        >
+          Contact Me
+        </a>
       </nav>
       <div></div>
     </header>

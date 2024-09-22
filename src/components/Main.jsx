@@ -15,12 +15,12 @@ export default function Main() {
         <p>
           I am a highly skilled and experienced civil engineer with a passion
           for creating innovative solutions. My expertise spans various areas of
-          engineering, including bridge design, structural engineering, and
-          geotechnical engineering.
+          engineering, including bridge design, structural engineering.
         </p>
 
         <Box className="btns">
           <Button
+            onClick={() => window.open("https://wa.me/+201125425194", "_blank")}
             variant="contained"
             sx={{ background: "#000", fontSize: "1rem", mr: "1rem" }}
           >
@@ -29,6 +29,9 @@ export default function Main() {
           </Button>
 
           <Button
+            onClick={() =>
+              window.open("https://t.me/YourTelegramUsername", "_blank")
+            }
             variant="contained"
             sx={{ background: "#000", fontSize: "1rem" }}
           >

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import img1 from "../images/1.jpeg";
-import img2 from "../images/2.jpeg";
-import img3 from "../images/3.jpeg";
+import img1 from "../images/5.jpeg";
+import img2 from "../images/4.jpeg";
+import img3 from "../images/1.jpeg";
 import img4 from "../images/3.jpeg";
 import img5 from "../images/3.jpeg";
 import img6 from "../images/3.jpeg";
 import img7 from "../images/3.jpeg";
+import { Box } from "@mui/material";
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState(null); // Store selected image
@@ -22,10 +23,10 @@ export default function Projects() {
 
   const renderedImages = images.map((img, index) => {
     return (
-      <div className="item" key={index} onClick={() => handleClick(img)}>
+      <Box className="item" key={index} onClick={() => handleClick(img)}>
         <img src={img} alt={"Image Of A Site"} />
         <h4>This Is Priject {index + 1}</h4>
-      </div>
+      </Box>
     );
   });
 
@@ -37,7 +38,7 @@ export default function Projects() {
 
       {/* Conditionally render modal if an image is selected */}
       {selectedImage && (
-        <div className="modal">
+        <Box className="modal">
           <span className="close" onClick={handleClose}>
             &times;
           </span>
@@ -46,7 +47,7 @@ export default function Projects() {
             src={selectedImage}
             alt="Enlarged view"
           />
-        </div>
+        </Box>
       )}
     </section>
   );
