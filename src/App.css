@@ -79,9 +79,9 @@ header nav {
   }
 }
 
-  header nav a:hover {
-    color: rgb(190, 20, 20) !important;
-  }
+header nav a:hover {
+  color: rgb(190, 20, 20) !important;
+}
 
 header nav.active {
   display: flex;
@@ -230,9 +230,9 @@ aside h2 {
 }
 
 #projects {
-  min-height: 100vh;
+  max-height: fit-content;
   max-width: 100vw;
-  padding: 1rem;
+  padding: 1rem 10rem;
   text-align: center;
 }
 
@@ -242,16 +242,18 @@ aside h2 {
 }
 
 #projects .work {
-  height: 100vh;
+  height: fit-content;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(9, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 180px);
+  gap: 0.7rem;
 }
 
 #projects .work .item {
   position: relative;
   overflow: hidden;
+  border: 2px solid #ccc;
+  cursor: pointer;
 }
 
 #projects .work .item::before {
@@ -271,41 +273,34 @@ aside h2 {
   object-fit: cover; /* Ensure the image covers the item */
   position: relative;
   z-index: 0; /* Keep the image below the glass effect */
+  transition: 0.5s;
 }
 
 #projects .work .item h4 {
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
+  background-color: #000000a1;
+  padding: 0.7rem 0;
+  font-size: 1.5rem;
 }
 
 #projects .work .item:nth-child(1) {
-  grid-area: 1 / 1 / 4 / 7;
+  grid-area: 1 / 1 / 2 / 9;
 }
 
 #projects .work .item:nth-child(2) {
-  grid-area: 1 / 7 / 4 / 10;
+  grid-area: 2 / 1 / 2 / 9;
 }
 
 #projects .work .item:nth-child(3) {
-  grid-area: 4 / 1 / 7 / 4;
+  grid-area: 3 / 1 / 3 / 9;
 }
 
-#projects .work .item:nth-child(4) {
-  grid-area: 4/ 4 / 7 / 7;
-}
-
-#projects .work .item:nth-child(5) {
-  grid-area: 4 / 7 / 7 / 10;
-}
-
-#projects .work .item:nth-child(6) {
-  grid-area: 7 / 1/ 10/ 4;
-}
-
-#projects .work .item:nth-child(7) {
-  grid-area: 7/ 4 / 10 / 10;
+#projects .work .item:hover img {
+  transform: scale(1.05);
 }
 
 /* Modal styling */
@@ -327,6 +322,7 @@ aside h2 {
   max-width: 80%;
   max-height: 80%;
   object-fit: contain;
+  border: 3px solid white;
 }
 
 .close {
@@ -337,6 +333,12 @@ aside h2 {
   color: white;
   cursor: pointer;
   z-index: 1001;
+}
+
+@media (max-width: 1300px) {
+  #projects {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -360,6 +362,10 @@ aside h2 {
     width: 100%;
   }
 
+  #projects .work .item h4 {
+    padding: 1.5rem 0;
+  }
+
   .modal-content {
     max-width: 92%;
     max-height: 92%;
@@ -375,5 +381,88 @@ aside h2 {
 @media (max-width: 350px) {
   #projects h2 {
     font-size: 1.5rem;
+  }
+}
+
+footer {
+  height: fit-content;
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #272525;
+  display: flex;
+  flex-direction: column;
+}
+
+footer h3 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+footer form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+
+footer form .input-group {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+footer form input {
+  flex-basis: 50%;
+  padding: 1rem;
+  border: none;
+  border-bottom: 2px solid crimson;
+  outline: none;
+  background-color: #000;
+  color: white;
+  display: inline-block;
+}
+
+footer form textarea {
+  flex-basis: 100%;
+  padding: 1rem;
+  border: none;
+  border-bottom: 2px solid crimson;
+  outline: none;
+  background-color: #000;
+  color: white;
+  display: block;
+  min-height: 150px;
+  resize: none;
+}
+
+footer form textarea::placeholder {
+  font-size: 1rem;
+}
+
+footer form button {
+  padding: 0.9rem 1.5rem;
+  background-color: #000;
+  color: rgb(161, 157, 157);
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  footer h3 {
+    text-align: center;
+  }
+
+  footer form .input-group {
+    flex-direction: column;
+  }
+
+  footer form button {
+    padding: 0.75rem 1.4rem;
+    width: 130px;
+    font-size: 1rem;
   }
 }

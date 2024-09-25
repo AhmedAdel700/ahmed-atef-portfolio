@@ -1,17 +1,17 @@
-import { useState } from "react";
-import img1 from "../images/5.jpeg";
+import { useEffect, useState } from "react";
+import img1 from "../images/3.jpeg";
 import img2 from "../images/4.jpeg";
-import img3 from "../images/1.jpeg";
-import img4 from "../images/3.jpeg";
-import img5 from "../images/3.jpeg";
-import img6 from "../images/3.jpeg";
-import img7 from "../images/3.jpeg";
+import img3 from "../images/5.jpeg";
 import { Box } from "@mui/material";
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState(null); // Store selected image
 
-  const images = [img1, img2, img3, img4, img5, img6, img7];
+  const images = [
+    { pic: img1, text: "Swimming Pool" },
+    { pic: img2, text: "Glass Pergola" },
+    { pic: img3, text: "Glass Facade" },
+  ];
 
   const handleClick = (img) => {
     setSelectedImage(img); // Set the clicked image as selected
@@ -21,18 +21,34 @@ export default function Projects() {
     setSelectedImage(null); // Close the modal
   };
 
-  const renderedImages = images.map((img, index) => {
+  // Close modal on Esc key press
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleEsc);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
+
+  const renderedImages = images.map((e, index) => {
     return (
-      <Box className="item" key={index} onClick={() => handleClick(img)}>
-        <img src={img} alt={"Image Of A Site"} />
-        <h4>This Is Priject {index + 1}</h4>
+      <Box className="item" key={index} onClick={() => handleClick(e.pic)}>
+        <img src={e.pic} alt={"Image Of A Site"} />
+        <h4>{e.text}</h4>
       </Box>
     );
   });
 
   return (
     <section id="projects">
-      <h2>Some Of My Projects</h2>
+      <h2>Previous Projects</h2>
 
       <div className="work">{renderedImages}</div>
 
