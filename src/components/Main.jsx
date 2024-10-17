@@ -5,12 +5,12 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 export default function Main() {
   return (
     <main id="home">
-      <aside>
+      <aside data-aos="fade-down">
         <h1>Ahmed Atef</h1>
         <h2>A Civil Engineer You Can Trust</h2>
       </aside>
 
-      <div className="about">
+      <div className="about" data-aos="fade-down" data-aos-delay="250">
         <h3>Who Am I ..?</h3>
         <p>
           I am a highly skilled and experienced civil engineer with a passion
@@ -18,7 +18,7 @@ export default function Main() {
           engineering, including bridge design, structural engineering.
         </p>
 
-        <Box className="btns">
+        <Box className="btns" data-aos="fade-down" data-aos-delay="450">
           <Button
             onClick={() => window.open("https://wa.me/+201125425194", "_blank")}
             variant="contained"

@@ -11,7 +11,7 @@ export default function Footer() {
           height: "100px",
           justifyContent: "center",
           alignItems: "center",
-          fontSize: "2rem",
+          fontSize: "1.8rem",
           bgcolor: "#272525",
         }}
       >
@@ -22,9 +22,9 @@ export default function Footer() {
 
   return (
     <footer id="contact">
-      <h3>Contact Me</h3>
-      <form onSubmit={handleSubmit}>
-        <Box className="input-group">
+      <h3 data-aos="fade-down">Contact Me</h3>
+      <form onSubmit={handleSubmit} data-aos="fade-down">
+        <Box className="input-group" data-aos="fade-down">
           <input
             type="text"
             name="name"
@@ -38,7 +38,12 @@ export default function Footer() {
             required
           />
         </Box>
-        <textarea name="message" placeholder="Your Message" required></textarea>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          data-aos="fade-down"
+        ></textarea>
 
         <ValidationError
           prefix="Message"

@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
 import img1 from "../images/3.jpeg";
 import img2 from "../images/4.jpeg";
 import img3 from "../images/5.jpeg";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+
+import SliderComp from "./SliderComp";
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState(null); // Store selected image
-
-  const images = [
-    { pic: img1, text: "Swimming Pool" },
-    { pic: img2, text: "Glass Pergola" },
-    { pic: img3, text: "Glass Facade" },
-  ];
+  const slider = useRef(null);
 
   const handleClick = (img) => {
     setSelectedImage(img); // Set the clicked image as selected
@@ -37,20 +35,11 @@ export default function Projects() {
     };
   }, []);
 
-  const renderedImages = images.map((e, index) => {
-    return (
-      <Box className="item" key={index} onClick={() => handleClick(e.pic)}>
-        <img src={e.pic} alt={"Image Of A Site"} />
-        <h4>{e.text}</h4>
-      </Box>
-    );
-  });
-
   return (
-    <section id="projects">
+    <section id="projects" data-aos='fade-up'>
       <h2>Previous Projects</h2>
 
-      <div className="work">{renderedImages}</div>
+      {/* <div className="work">{renderedImages}</div> */}
 
       {/* Conditionally render modal if an image is selected */}
       {selectedImage && (
@@ -65,6 +54,21 @@ export default function Projects() {
           />
         </Box>
       )}
+      <Button
+        sx={{ backgroundColor: "#000", margin: "1rem",width:"130px",height:"40px" }}
+        variant="contained"
+        onClick={() => slider.current.slickPrev()}
+      >
+        Prev
+      </Button>
+      <Button
+        sx={{ backgroundColor: "#000", margin: "1rem",width:"130px",height:"40px" }}
+        variant="contained"
+        onClick={() => slider.current.slickNext()}
+      >
+        Next
+      </Button>
+      <SliderComp slider={slider} img={handleClick} />
     </section>
   );
 }
